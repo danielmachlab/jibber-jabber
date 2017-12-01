@@ -1,4 +1,33 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<html>
+    <head>
+        <script>
+
+        </script>
+        <style>
+            body, html {
+                height: 100%;
+                display: grid;
+            }
+            .container {
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                Please log in
+            </div>
+            <div>
+                <form>
+                    Phone number
+                    <input id="phNumber" type="number">
+                    <input type="submit" value="Log In">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

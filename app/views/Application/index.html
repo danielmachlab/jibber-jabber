@@ -1,10 +1,14 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
 
 <html>
     <head>
-        <script>
-
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var socket = new WebSocket('ws://localhost:9000/socket?name=ted');
+                socket.addEventListener('message', function (event) {
+                    console.log(event.data);
+                });
+            });
         </script>
         <style>
             body, html {
@@ -24,7 +28,7 @@
             <div>
                 <form>
                     Phone number
-                    <input id="phNumber" type="number">
+                    <input id="phNumber" type="tel">
                     <input type="submit" value="Log In">
                 </form>
             </div>

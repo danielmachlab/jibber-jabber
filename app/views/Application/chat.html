@@ -4,6 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        function addMessage(message) {
+            console.log(message);
+            var node = document.createElement("div");
+            var textNode = document.createTextNode(message);
+            node.appendChild(textNode);
+            document.getElementById("chat-box").appendChild(node);
+        }
+    </script>
     <meta charset="UTF-8">
     <title>Chat</title>
 
@@ -51,15 +60,15 @@
 
                     <div class = "feed col-9">
                         <h2>Board Members: </h2>
-                        <div class="form-group  form-control col-11" style="overflow: scroll; height: 70%;">
+                        <div class="form-group  form-control col-11" id="chat-box" style="overflow: scroll; height: 70%;">
 
                         </div>
                         <br>
                         <div class="col-11">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="jibber-jabber" aria-label="Search for...">
+                                <input type="text" id="message-box" class="form-control"  value="message" placeholder="jibber-jabber" aria-label="Search for...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button">Send</button>
+                                    <button class="btn btn-secondary" type="button" onclick="addMessage(document.getElementById('message-box').value)">Send</button>
                                 </span>
                             </div>
                         </div>

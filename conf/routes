@@ -4,6 +4,9 @@
 
 # Home page
 GET     /                                       Application.index
+POST    /chat                                   Application.chat
+
+# WebSocket
 WS      /socket                                 MySocketController.socket
 
 # Ignore favicon requests

@@ -20,22 +20,30 @@
         .container {
             margin: auto;
         }
+
+        label{
+            font-size: 24px;
+        }
+
+        h1{
+            font-size: 32px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div>
-        <img src="" class="img-fluid" alt="Responsive image">
+        <img src="../../../public/images/LoginHeader.jpg" class="img-fluid" alt="Responsive image">
         <h1>Please log in</h1>
     </div>
 
     <div>
-        <form action="@{controllers.Application.chat()}"  method="post">
+        <form action="@{controllers.Application.chat()}" method="post">
             <div class="form">
-                <label for="phNumber">Phone Number:</label>
+                <label for="phNumber">Phone Number</label>
             </div>
-            <input id="phNumber" type="number">
-            <input type="submit" value="Log In">
+            <input id="phNumber" type="number" name="phoneNumber" min="1000000000" max="9999999999">
+            <input type="submit" class="btn btn-primary" value="Log In">
         </form>
     </div>
 </div>

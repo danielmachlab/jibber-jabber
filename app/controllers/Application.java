@@ -13,7 +13,7 @@ public class Application extends Controller {
         render();
     }
 
-    public static void chat(String phNumber) {
+    public static void chat(int phoneNumber) {
 //        // Check db for user already exists
 //        User user = User.findById(phNumber);
 //
@@ -29,7 +29,7 @@ public class Application extends Controller {
 //
 //                // add user to chat room
 //                // render messeges
-
+        System.out.println(phoneNumber);
         render();
     }
 

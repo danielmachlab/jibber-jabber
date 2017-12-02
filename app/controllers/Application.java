@@ -14,21 +14,21 @@ public class Application extends Controller {
     }
 
     public static void chat(String phNumber) {
-        // Check db for user already exists
-        User user = User.findById(phNumber);
-
-        // if new user,
-        // create new User obj and save
-        if (user == null) {
-            user = new User(phNumber);
-            user.save();
-        }
-
-
-
-
-                // add user to chat room
-                // render messeges
+//        // Check db for user already exists
+//        User user = User.findById(phNumber);
+//
+//        // if new user,
+//        // create new User obj and save
+//        if (user == null) {
+//            user = new User(phNumber);
+//            user.save();
+//        }
+//
+//
+//
+//
+//                // add user to chat room
+//                // render messeges
 
         render();
     }

@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-@Entity
-@Table(name = "chat")
+//@Entity
+//@Table(name = "chat")
 public class Chat extends Model {
 
     public Set<User> members;

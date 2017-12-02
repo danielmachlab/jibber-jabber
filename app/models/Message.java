@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "message")
+//@Entity
+//@Table(name = "message")
 public class Message extends Model {
 
     public LocalDateTime timestamp;

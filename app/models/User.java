@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.util.LinkedList;
 import java.util.List;
 
-@Entity
-@Table(name = "user")
+//@Entity
+//@Table(name = "user")
 public class User extends Model {
 
     public String phNumber;

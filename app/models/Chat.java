@@ -3,21 +3,23 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-//@Entity
-//@Table(name = "chat")
+@Entity
 public class Chat extends Model {
 
+    @OneToMany
     public Set<User> members;
-    public Queue<Message> messages;
 
-    public Chat(List<User> jibberJabberers) {
-        members.addAll(jibberJabberers);
+    @OneToMany
+    public List<Message> messages;
+
+    public Chat(Set<User> jibberJabberers) {
+        members = jibberJabberers;
         messages = new LinkedList<>();
     }
 

@@ -14,6 +14,7 @@ public class Application extends Controller {
     }
 
     public static void chat(int phoneNumber) {
+        User user = new User("3199308319", "tits_boi");
 //        // Check db for user already exists
 //        User user = User.findById(phNumber);
 //

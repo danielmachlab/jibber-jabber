@@ -3,21 +3,23 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 import java.util.LinkedList;
 import java.util.List;
 
-//@Entity
-//@Table(name = "user")
+@Entity
 public class User extends Model {
 
     public String phNumber;
-    public List<Chat> chatList;
+    public String userName;
 
-    public User(String num) {
+    @OneToMany
+    public List<Chat> chats;
+
+    public User(String num, String name) {
         phNumber = num;
-        chatList = new LinkedList<>();
-
+        userName = name;
+        chats = new LinkedList<>();
     }
 
 }

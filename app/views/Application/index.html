@@ -19,6 +19,11 @@
 
         .container {
             margin: auto;
+            height: 1000px;
+        }
+
+        .inputArea {
+            margin: 5px;
         }
 
         label{
@@ -32,19 +37,54 @@
 </head>
 <body>
 <div class="container">
-    <div>
-        <img src="../../../public/images/LoginHeader2.jpg" class="img-fluid" alt="Responsive image">
-        <h1>Please log in</h1>
-    </div>
+    <img src="../../../public/images/LoginHeader2.jpg" class="img-fluid" alt="Responsive image">
+    <br>
+    <div class = "row">
+        <div class="col-2">
 
-    <div>
-        <form action="@{controllers.Application.chat()}" method="post">
-            <div class="form">
-                <label for="phNumber">Phone Number</label>
+        </div>
+        <form action="@{controllers.Application.login()}" method="post">
+            <div class="form-group inputArea">
+                <label for="exampleInputEmail1">Please Log In</label>
+                <input type="tel" class="form-control"  aria-describedby="emailHelp" placeholder="Username" required>
+                <small id="emailHelp" class="form-text text-muted"></small>
+
+
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
             </div>
-            <input id="phNumber" type="number" name="phoneNumber" min="1000000000" max="9999999999">
-            <input type="submit" class="btn btn-primary" value="Log In">
+            <button type="submit" class="btn btn-primary inputArea">Submit</button>
         </form>
+        <div class="col-2">
+
+        </div>
+
+        <form action="@{controllers.Application.signup()}" method="post">
+            <div class="form-group">
+                <div class="row inputArea">
+                    <label for="validationServer01">Sign Up</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="" required>
+                </div>
+
+                <div class="row inputArea">
+                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="" required>
+                </div>
+
+                <div class = "row inputArea">
+                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Username" value="" required>
+                </div>
+
+                <div class="row inputArea">
+                    <input type="password" class="form-control is-valid" id="validationServer02" placeholder="Password" value="" required>
+                </div>
+                <button type="submit" class="btn btn-primary inputArea">Submit</button>
+
+            </div>
+
+        </form>
+
+
+
+
     </div>
 </div>
 </body>

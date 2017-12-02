@@ -9,6 +9,5 @@ public class MySocketController extends WebSocketController {
      */
     public static void socket(String name) {
         System.out.println("name is:" + name);
-        outbound.send("Hello %s!", name);
     }
 }

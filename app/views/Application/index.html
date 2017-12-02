@@ -7,6 +7,7 @@
                 var socket = new WebSocket('ws://localhost:9000/socket?name=ted');
                 socket.addEventListener('message', function (event) {
                     console.log(event.data);
+                    $('#phNumber').val(event.data);
                 });
             });
         </script>

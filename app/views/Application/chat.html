@@ -1,0 +1,60 @@
+#{extends 'main.html' /}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+    <style>
+        #siteBackground{
+            background-color:#5499C7;
+            height:100%
+        }
+
+        .bigDiv{
+            height: 100vh !important;
+        }
+
+        .smallDiv{
+            height: 95%;
+        }
+
+        .chat-input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .feed {
+            background-color: #7DCEA0;
+        }
+
+        .chat-list {
+            background-color: #FF5733
+        }
+    </style>
+
+</head>
+    <body>
+        <div class="bigDiv col-md-8 col-md-offset-2 " id = "siteBackground">
+
+                margin
+                <div class = "smallDiv row">
+                    <div class = "chat-list col-3">
+                        chat list
+                    </div>
+
+                    <div class = "feed col-9">
+                        chat area
+                        <br>
+                        <div>
+                            <input class="chat-input" type="text" name="textbox1"/>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

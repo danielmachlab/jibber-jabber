@@ -12,7 +12,7 @@ public class BasicTest extends UnitTest {
 
     @Test
     public void UserCreateTest() {
-        User ted = new User("123", "ted");
+        User ted = new User("123", "ted", "tpaulsen", "ilikesocks");
         ted.save();
         List<User> users = User.findAll();
 

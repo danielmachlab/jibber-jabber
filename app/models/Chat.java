@@ -1,6 +1,8 @@
 package models;
 
 import play.db.jpa.Model;
+import java.util.*;
+import play.libs.F.*;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -22,5 +24,6 @@ public class Chat extends Model {
         members = jibberJabberers;
         messages = new LinkedList<>();
     }
+
 
 }

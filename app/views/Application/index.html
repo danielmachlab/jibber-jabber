@@ -7,7 +7,7 @@
             var socket = new WebSocket('ws://localhost:9000/socket?name=ted');
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
-                $('#phNumber').val(event.data);
+                $('#userFirstName').val(event.data);
             });
         });
     </script>
@@ -62,30 +62,20 @@
             <div class="form-group">
                 <div class="row inputArea">
                     <label for="validationServer01">Sign Up</label>
-                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="" required>
+                    <input type="text" class="form-control is-valid" id="userFirstName" placeholder="First name" value="" required>
                 </div>
-
                 <div class="row inputArea">
-                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="" required>
+                    <input type="text" class="form-control is-valid" id="userSecondName" placeholder="Last name" value="" required>
                 </div>
-
                 <div class = "row inputArea">
-                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Username" value="" required>
+                    <input type="text" class="form-control is-valid" id="userUserName" placeholder="Username" value="" required>
                 </div>
-
                 <div class="row inputArea">
-                    <input type="password" class="form-control is-valid" id="validationServer02" placeholder="Password" value="" required>
+                    <input type="password" class="form-control is-valid" id="userPassword" placeholder="Password" value="" required>
                 </div>
                 <button type="submit" class="btn btn-primary inputArea">Submit</button>
-
             </div>
-
-        </form>
-
-
-
-
-    </div>
+        </form></div>
 </div>
 </body>
 </html>

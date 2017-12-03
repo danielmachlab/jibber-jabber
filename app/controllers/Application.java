@@ -39,5 +39,4 @@ public class Application extends Controller {
     public static void chat( User usr ) {
         render(usr);
     }
-
 }

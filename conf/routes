@@ -11,6 +11,7 @@ POST    /chat                                   Application.chat
 # WebSocket
 WS      /socket                                 MySocketController.socket
 GET     /chat                                   Application.chat
+WS      /messengerSocket                        MySocketController.messengerSocket
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

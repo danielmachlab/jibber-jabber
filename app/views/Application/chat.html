@@ -5,13 +5,34 @@
 <html lang="en">
 <head>
     <script>
+        var socket;
+        $(document).ready(function () {
+            socket = new WebSocket('ws://localhost:9000/messengerSocket?name=fred');
+            socket.addEventListener('message', function (event) {
+                console.log(event.data);
+                $('#chat-box').val(event.data);
+            });
+        });
+
+//        socket.onmessage = function (message) {
+//            addMessage(message);
+//        }
+
+        function sendMessage(message) {
+            socket.send(message);
+            console.log('sent message');
+        }
+
         function addMessage(message) {
             console.log(message);
             var node = document.createElement("div");
             var textNode = document.createTextNode(message);
             node.appendChild(textNode);
             document.getElementById("chat-box").appendChild(node);
+            sendMessage(message);
         }
+
+
     </script>
     <meta charset="UTF-8">
     <title>Chat</title>
@@ -60,9 +81,9 @@
 
                     <div class = "feed col-9">
                         <h2>Board Members: </h2>
-                        <div class="form-group  form-control col-11" id="chat-box" style="overflow: scroll; height: 70%;">
+                        <input class="form-group  form-control col-11" id="chat-box" style="overflow: scroll; height: 70%;">
 
-                        </div>
+                        </input>
                         <br>
                         <div class="col-11">
                             <div class="input-group">

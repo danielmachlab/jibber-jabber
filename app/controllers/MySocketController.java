@@ -7,6 +7,8 @@ import play.mvc.WebSocketController;
 import play.libs.F.*;
 
 import javax.mail.Session;
+import javax.swing.text.html.HTMLDocument;
+import java.util.Iterator;
 
 public class MySocketController extends WebSocketController {
 
@@ -19,10 +21,11 @@ public class MySocketController extends WebSocketController {
     }
 
     public static void messengerSocket(String username) {
-
         System.out.println(username);
         outbound.send("You are now connected to the jat!");
         Client.connections.add(new Client(outbound, username));
+
+        //printClients();
 
         try {
             while (inbound.isOpen()) {
@@ -31,10 +34,15 @@ public class MySocketController extends WebSocketController {
                 if (e instanceof Http.WebSocketFrame) {
                     String senderUsername = ((Http.WebSocketFrame) e).textData.split(":")[0];
                     String message = ((Http.WebSocketFrame) e).textData.split(":")[1];
+                    if(message.equals("quit")){
+                        disconnect();
+                    }
 
                     for (Client clients : Client.connections) {
                         if (!(clients.username.equals(senderUsername))) {
                             clients.outbound.send(senderUsername + ": " + message);
+                        }else{
+                            System.out.println("Server received message: " + message + " from " + senderUsername);
                         }
                     }
                 }
@@ -42,6 +50,7 @@ public class MySocketController extends WebSocketController {
 
             outbound.send("inbound closed");
             System.out.println("inbound closed");
+
         }catch(JavaExecutionException e){
             System.out.println("this is the problem");
         }catch (Exception e){
@@ -55,6 +64,17 @@ public class MySocketController extends WebSocketController {
             }
 
         }
+    }
+
+    public static void printClients(){
+        Iterator<Client> x = Client.connections.iterator();
+        System.out.println("----------------\nCurrent connected clients: ");
+        while (x.hasNext()){
+            System.out.println(x.next().username);
+        }
+        System.out.println("----------------");
+
+
     }
 
 }

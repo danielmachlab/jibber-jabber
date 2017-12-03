@@ -11,7 +11,7 @@
             socket = new WebSocket('ws://localhost:9000/messengerSocket?username=' + $('#username').val());
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
-                $('#chat-box').append(event.data);
+                $('#chat-box').append("<div>" + event.data + "</div>");
             });
         });
 
@@ -20,7 +20,7 @@
 //        }
 
         function sendMessage(message) {
-            socket.send($('#username') + ":" + message);
+            socket.send($('#username').val() + ":" + message);
             console.log('sent message');
         }
 
@@ -28,7 +28,7 @@
             var message = $('#message-box').val();
             console.log("adding message: "+ message);
             var node = document.createElement("div");
-            var textNode = document.createTextNode("Client: " + message);
+            var textNode = document.createTextNode("You: " + message);
             node.appendChild(textNode);
             document.getElementById("chat-box").appendChild(node);
             sendMessage(message);

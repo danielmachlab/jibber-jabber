@@ -16,9 +16,11 @@ public class MySocketController extends WebSocketController {
         outbound.send("hello %s!", name);
     }
 
-    public static void messengerSocket() {
+    public static void messengerSocket(String username) {
+
+        System.out.println(username);
         outbound.send("You are now connected to the jat!");
-        Client.connections.add(new Client(outbound));
+        Client.connections.add(new Client(outbound, username));
 
         while(inbound.isOpen()){
             Http.WebSocketEvent e = await(inbound.nextEvent());
@@ -28,8 +30,8 @@ public class MySocketController extends WebSocketController {
                 String message = ((Http.WebSocketFrame)e).textData.split(":")[1];
 
                 for (Client clients : Client.connections) {
-                    if (clients.username != senderUsername) {
-                        clients.outbound.send(message);
+                    if (!(clients.username.equals(senderUsername))) {
+                        clients.outbound.send(senderUsername +": " + message);
                     }
                 }
             }

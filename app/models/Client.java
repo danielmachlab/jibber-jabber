@@ -17,7 +17,8 @@ public class Client {
     public static Set<Client> connections = new HashSet<>();
 
 
-    public Client(Http.Outbound ob) {
+    public Client(Http.Outbound ob, String username) {
         outbound = ob;
+        this.username = username;
     }
 }

@@ -4,13 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
+
+    <script type="text/javascript">
         var socket;
         $(document).ready(function () {
             socket = new WebSocket('ws://localhost:9000/messengerSocket?name=fred');
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
-                $('#chat-box').val(event.data);
+                $('#chat-box').append(event.data);
+
             });
         });
 
@@ -24,13 +26,20 @@
         }
 
         function addMessage(message) {
-            console.log(message);
+            console.log("adding message: "+ message);
             var node = document.createElement("div");
-            var textNode = document.createTextNode(message);
+            var textNode = document.createTextNode("Client: " + message);
             node.appendChild(textNode);
             document.getElementById("chat-box").appendChild(node);
             sendMessage(message);
         }
+
+//        function fromServer(message) {
+//            var div = document.createElement('div');
+//            document.body.appendChild(div);
+//        }
+
+
 
 
     </script>
@@ -81,13 +90,12 @@
 
                     <div class = "feed col-9">
                         <h2>Board Members: </h2>
-                        <input class="form-group  form-control col-11" id="chat-box" style="overflow: scroll; height: 70%;">
-
-                        </input>
+                        <div class="form-group  form-control col-11" id="chat-box" style="overflow: scroll; height: 70%;">
+                        </div>
                         <br>
                         <div class="col-11">
                             <div class="input-group">
-                                <input type="text" id="message-box" class="form-control"  placeholder="Compose Message">
+                                <input id="message-box" class="form-control"  placeholder="Compose Message">
                                 <span class="input-group-btn">
                                     <button class="btn btn-secondary" type="button" onclick="addMessage(document.getElementById('message-box').value)">Send</button>
                                 </span>

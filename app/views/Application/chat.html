@@ -8,11 +8,10 @@
     <script type="text/javascript">
         var socket;
         $(document).ready(function () {
-            socket = new WebSocket('ws://localhost:9000/messengerSocket?name=fred');
+            socket = new WebSocket('ws://localhost:9000/messengerSocket?username=' + $('#username').val());
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
                 $('#chat-box').append(event.data);
-
             });
         });
 
@@ -21,11 +20,12 @@
 //        }
 
         function sendMessage(message) {
-            socket.send(message);
+            socket.send($('#username') + ":" + message);
             console.log('sent message');
         }
 
-        function addMessage(message) {
+        function addMessage() {
+            var message = $('#message-box').val();
             console.log("adding message: "+ message);
             var node = document.createElement("div");
             var textNode = document.createTextNode("Client: " + message);
@@ -65,8 +65,6 @@
             bottom: 0;
             left: 0;
             width: 100%;
-
-
         }
 
         .feed {
@@ -96,8 +94,9 @@
                         <div class="col-11">
                             <div class="input-group">
                                 <input id="message-box" class="form-control"  placeholder="Compose Message">
+                                <input type="hidden" id="username" name="name" value="${user.userName}">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-secondary" type="button" onclick="addMessage(document.getElementById('message-box').value)">Send</button>
+                                    <button class="btn btn-secondary" onclick="addMessage()">Send</button>
                                 </span>
                             </div>
                         </div>

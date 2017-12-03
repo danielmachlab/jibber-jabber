@@ -1,13 +1,10 @@
 package controllers;
 
+import models.Client;
 import play.mvc.Http;
 import play.mvc.WebSocketController;
 
 import javax.mail.Session;
-
-import java.util.Set;
-
-import static play.libs.F.Matcher.ClassOf;
 
 public class MySocketController extends WebSocketController {
 
@@ -19,21 +16,28 @@ public class MySocketController extends WebSocketController {
         outbound.send("hello %s!", name);
     }
 
-    public static void messengerSocket(Session session){
-        outbound.send("You are now connected to the chat!");
-        Set<Session> allSessions;
+    public static void messengerSocket() {
+        outbound.send("You are now connected to the jat!");
+        Client.connections.add(new Client(outbound));
 
         while(inbound.isOpen()){
-
             Http.WebSocketEvent e = await(inbound.nextEvent());
 
             if(e instanceof Http.WebSocketFrame) {
-                //we need to make a for loop to send to all connected clients aka group chat members
+                String senderUsername = ((Http.WebSocketFrame)e).textData.split(":")[0];
+                String message = ((Http.WebSocketFrame)e).textData.split(":")[1];
 
-                outbound.send("Server: " + ((Http.WebSocketFrame) e).textData);
+                for (Client clients : Client.connections) {
+                    if (clients.username != senderUsername) {
+                        clients.outbound.send(message);
+                    }
+                }
             }
 
         }
+
+        outbound.send("inbound closed");
+        System.out.println("inbound closed");
     }
 
 }

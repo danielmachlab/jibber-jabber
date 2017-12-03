@@ -15,28 +15,31 @@ public class Application extends Controller {
 
     public static void login(String username, String password) {
         // get user from db
-        User ted = new User("ted", "paulsen", "tedpaulsen", "passw0rd");
-        ted.save();
-        List<User> userList = User.find("byUsernameAndPassword", "tedpaulsen", "passw0rd").fetch();
+        List<User> userList = User.find("byUsernameAndPassword", username, password).fetch();
 
-        if (userList.size() != 1) {
+        if (userList.size() == 1) {
             System.out.println("found user");
-            chat( userList.get(0) );
+            User user = userList.get(0);
+            chat(user.userName);
         } else {
             System.out.println("couldn't find user");
             index();
         }
-
     }
 
-    public static void signup(String firstName, String lastName, String username, String passwd) {
+    public static void signup(String firstName, String lastName, String username, String password) {
         // create user in db
-        User newUser = new User(firstName, lastName, username, passwd);
+        User newUser = new User(firstName, lastName, username, password);
         newUser.save();
-        chat(newUser);
+
+        // render chat page for this username
+        chat(newUser.userName);
     }
 
-    public static void chat( User usr ) {
-        render(usr);
+    public static void chat( String username ) {
+        User user = (User) User.find("byUsername", username).fetch().get(0);
+        List<Chat> chats = user.chats;
+
+        render(user, chats);
     }
 }

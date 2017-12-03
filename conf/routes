@@ -6,11 +6,10 @@
 GET     /                                       Application.index
 POST    /login                                  Application.login
 POST    /signup                                 Application.signup
-POST    /chat                                   Application.chat
+GET     /chat                                   Application.chat
 
 # WebSocket
 WS      /socket                                 MySocketController.socket
-GET     /chat                                   Application.chat
 WS      /messengerSocket                        MySocketController.messengerSocket
 
 # Ignore favicon requests

@@ -12,7 +12,7 @@ public class Start extends Job {
     public void doJob() {
         System.out.println("Job is running");
 
-        if (Chat.findAll().size() == 0) {
+        //if (Chat.findAll().size() == 0) {
 
 
             Chat jibber = new Chat("jibber");
@@ -21,6 +21,6 @@ public class Start extends Job {
             Chat jabber = new Chat("jabber");
             jabber.save();
 
-        }
+        //}
     }
 }

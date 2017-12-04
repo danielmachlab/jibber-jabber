@@ -1,9 +1,12 @@
 package models;
 
+import org.apache.commons.collections.set.SynchronizedSet;
 import play.mvc.Http;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Client {
 
@@ -12,10 +15,9 @@ public class Client {
     public Http.Outbound outbound;
 
     /**
-     * Set of all active connections via websocket to our application
+     * Set of all active clients via websocket to our application
      */
-    public static Set<Client> connections = new HashSet<>();
-
+    public static Set<Client> clients = Collections.synchronizedSet(new HashSet<Client>());
 
     public Client(Http.Outbound ob, String username) {
         outbound = ob;

@@ -1,15 +1,10 @@
 package controllers;
 
-import models.Chat;
 import models.Client;
-import models.Message;
-import models.User;
 import play.exceptions.JavaExecutionException;
 import play.mvc.Http;
 import play.mvc.WebSocketController;
-import play.libs.F.*;
 
-import javax.mail.Session;
 import java.util.Iterator;
 
 public class MySocketController extends WebSocketController {
@@ -29,7 +24,7 @@ public class MySocketController extends WebSocketController {
 //        }
         System.out.println(username);
         outbound.send("You are now connected to the jat!");
-        Client.connections.add(new Client(outbound, username));
+        Client.clients.add(new Client(outbound, username));
 
         try {
             while (inbound.isOpen()) {
@@ -45,7 +40,7 @@ public class MySocketController extends WebSocketController {
 //                    Message msg = new Message(sender, message, chat);
 //                    msg.save();
 
-                    for (Client clients : Client.connections) {
+                    for (Client clients : Client.clients) {
                         if (!(clients.username.equals(senderUsername))) {
                             clients.outbound.send(senderUsername + ": " + message);
                         }else{
@@ -61,9 +56,9 @@ public class MySocketController extends WebSocketController {
             System.out.println("this is the problem");
         } catch (Exception e) {
             System.out.println("Class: " + e.getClass());
-            for (Client clients : Client.connections) {
+            for (Client clients : Client.clients) {
                 if (clients.outbound.equals(outbound)) {
-                    Client.connections.remove(clients);
+                    Client.clients.remove(clients);
                     System.out.printf("removed: %s", clients.username);
                 }
             }
@@ -73,7 +68,7 @@ public class MySocketController extends WebSocketController {
     }
 
     public static void printClients(){
-        Iterator<Client> x = Client.connections.iterator();
+        Iterator<Client> x = Client.clients.iterator();
         System.out.println("------------\nCurrent connected clients: ");
         while(x.hasNext()){
             System.out.println(x.next().username);

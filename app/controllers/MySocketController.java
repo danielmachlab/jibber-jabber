@@ -1,14 +1,15 @@
 package controllers;
 
+import models.Chat;
 import models.Client;
+import models.Message;
+import models.User;
 import play.exceptions.JavaExecutionException;
 import play.mvc.Http;
 import play.mvc.WebSocketController;
 import play.libs.F.*;
 
 import javax.mail.Session;
-import javax.swing.text.html.HTMLDocument;
-import java.util.Iterator;
 
 public class MySocketController extends WebSocketController {
 
@@ -21,11 +22,10 @@ public class MySocketController extends WebSocketController {
     }
 
     public static void messengerSocket(String username) {
+
         System.out.println(username);
         outbound.send("You are now connected to the jat!");
         Client.connections.add(new Client(outbound, username));
-
-        //printClients();
 
         try {
             while (inbound.isOpen()) {
@@ -34,15 +34,15 @@ public class MySocketController extends WebSocketController {
                 if (e instanceof Http.WebSocketFrame) {
                     String senderUsername = ((Http.WebSocketFrame) e).textData.split(":")[0];
                     String message = ((Http.WebSocketFrame) e).textData.split(":")[1];
-                    if(message.equals("quit")){
-                        disconnect();
-                    }
+
+                    User sender = (User) User.find("byUsername", username).fetch().get(0);
+                    Chat chat = ((User) User.find("byUsername", username).fetch().get(0)).chats.get(0);
+                    Message msg = new Message(sender, message, chat);
+                    msg.save();
 
                     for (Client clients : Client.connections) {
                         if (!(clients.username.equals(senderUsername))) {
                             clients.outbound.send(senderUsername + ": " + message);
-                        }else{
-                            System.out.println("Server received message: " + message + " from " + senderUsername);
                         }
                     }
                 }
@@ -50,13 +50,12 @@ public class MySocketController extends WebSocketController {
 
             outbound.send("inbound closed");
             System.out.println("inbound closed");
-
-        }catch(JavaExecutionException e){
+        } catch (JavaExecutionException e) {
             System.out.println("this is the problem");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Class: " + e.getClass());
-            for(Client clients : Client.connections) {
-                if(clients.outbound.equals(outbound)){
+            for (Client clients : Client.connections) {
+                if (clients.outbound.equals(outbound)) {
                     Client.connections.remove(clients);
                     System.out.printf("removed: %s", clients.username);
                     disconnect();
@@ -64,17 +63,6 @@ public class MySocketController extends WebSocketController {
             }
 
         }
-    }
-
-    public static void printClients(){
-        Iterator<Client> x = Client.connections.iterator();
-        System.out.println("----------------\nCurrent connected clients: ");
-        while (x.hasNext()){
-            System.out.println(x.next().username);
-        }
-        System.out.println("----------------");
-
-
     }
 
 }

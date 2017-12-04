@@ -18,12 +18,14 @@ public class User extends Model {
     @OneToMany
     public List<Chat> chats;
 
-    public User(String first, String last, String user, String pwd) {
+    public User(String first, String last, String user, String pwd, Chat chat) {
         userName = user;
         password = pwd;
         firstName = first;
         lastName = last;
+
         chats = new LinkedList<>();
+        chats.add(chat);
     }
 
 }

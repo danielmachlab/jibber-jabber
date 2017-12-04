@@ -7,7 +7,10 @@
             var socket = new WebSocket('ws://localhost:9000/socket?name=ted');
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
-                $('#userFirstName').val(event.data);
+                $('#userFirstName').val("cooper");
+                $('#userSecondName').val("bell");
+                $('#userUserName').val("cooperbell");
+                $('#userPassword').val("boobs");
             });
         });
     </script>
@@ -68,7 +71,7 @@
                     <input type="text" class="form-control is-valid" id="userSecondName" placeholder="Last name" name="lastName" value="" required>
                 </div>
                 <div class = "row inputArea">
-                    <input type="text" class="form-control is-valid" id="userUserName" placeholder="Username" name="username" value="" required>
+                    <input type="text" class="form-control is-valid" id="userUserName"  placeholder="Username" name="username" value="" required>
                 </div>
                 <div class="row inputArea">
                     <input type="password" class="form-control is-valid" id="userPassword" placeholder="Password" name="password" value="" required>

@@ -5,6 +5,7 @@
 # Home page
 GET     /                                       Application.index
 POST     /chat                                   Application.chat
+GET     /dojob                                 Application.doJob
 
 # WebSocket
 WS      /socket                                 MySocketController.socket

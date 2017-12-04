@@ -1,5 +1,7 @@
 package controllers;
 
+import jobs.Start;
+import play.libs.F;
 import play.mvc.*;
 
 import java.util.*;
@@ -18,5 +20,11 @@ public class Application extends Controller {
         List<Message> messages = chat.messages;
 
         render(username, messages);
+    }
+
+    public static void doJob() {
+        System.out.println("Starting chat job");
+        new Start().now();
+        System.out.println("Done with chat job");
     }
 }

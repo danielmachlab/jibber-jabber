@@ -4,8 +4,10 @@ import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "message")
 public class Message extends Model {
 
     public String msg;

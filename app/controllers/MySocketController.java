@@ -41,11 +41,13 @@ public class MySocketController extends WebSocketController {
 //                    msg.save();
 
                     for (Client clients : Client.clients) {
-                        if (!(clients.username.equals(senderUsername))) {
-                            clients.outbound.send(senderUsername + ": " + message);
-                        }else{
-                            System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
-                        }
+                        clients.outbound.send(senderUsername + ": " + message);
+                        System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
+//                        if (!(clients.username.equals(senderUsername))) {
+//                            clients.outbound.send(senderUsername + ": " + message);
+//                        }else{
+//                            System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
+//                        }
                     }
                 }
             }

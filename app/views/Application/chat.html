@@ -19,20 +19,21 @@
 //            addMessage(message);
 //        }
 
-        function sendMessage(message) {
+        function sendMessage() {
+            var message = $('#message-box').val();
             socket.send($('#username').val() + ":" + message);
             console.log('sent message');
         }
 
-        function addMessage() {
-            var message = $('#message-box').val();
-            console.log("adding message: "+ message);
-            var node = document.createElement("div");
-            var textNode = document.createTextNode("You: " + message);
-            node.appendChild(textNode);
-            document.getElementById("chat-box").appendChild(node);
-            sendMessage(message);
-        }
+//        function addMessage() {
+//            var message = $('#message-box').val();
+//            console.log("adding message: "+ message);
+//            var node = document.createElement("div");
+//            var textNode = document.createTextNode("You: " + message);
+//            node.appendChild(textNode);
+//            document.getElementById("chat-box").appendChild(node);
+//            sendMessage(message);
+//        }
 
 //        function fromServer(message) {
 //            var div = document.createElement('div');
@@ -107,7 +108,7 @@
                                 <input id="message-box" class="form-control"  placeholder="Compose Message">
                                 <input type="hidden" id="username" name="name" value="${user.userName}">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-secondary" onclick="addMessage()">Send</button>
+                                    <button class="btn btn-secondary" onclick="sendMessage()">Send</button>
                                 </span>
                             </div>
                         </div>

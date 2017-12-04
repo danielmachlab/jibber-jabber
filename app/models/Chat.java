@@ -10,26 +10,27 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Entity for the chats
+ * Entity for the chats. The entity tag makes it persistent to the database.
  */
 @Entity
 @Table(name = "\"jat\"")
 public class Chat extends GenericModel {
 
     /**
-     * Primary Key
+     * Primary Key of the table
+     * Either 'jibber' or 'jabber'
      */
     @Id
     public String chatId;
 
     /**
-     *
+     * The list of messages in the chat.
      */
     @OneToMany
     public List<Message> messages;
 
     /**
-     * Constructor
+     * Constructor to initialize the chat room. Only called on app startup.
      * @param id the chat id
      */
     public Chat(String id) {

@@ -32,18 +32,15 @@
     <br>
     <div class="row">
         <div class="col-5">
-
         </div>
         <form action="@{controllers.Application.chat()}" method="post">
             <div class="form-group inputArea">
-                <label for="exampleInputEmail1">Log In</label>
-                <input type="tel" class="form-control" aria-describedby="emailHelp" name="username"
-                       placeholder="Username" required>
+                <label>Log In</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
                 <select class="selectpicker inputArea" name="clientChatID">
                     <option>jibber</option>
                     <option>jabber</option>
                 </select>
-
             </div>
             <button type="submit" class="btn btn-primary inputArea">Submit</button>
         </form>

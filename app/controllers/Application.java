@@ -9,13 +9,14 @@ import java.util.*;
 import models.*;
 
 /**
- *
+ * Application HTTP request controller.
+ * Handles requests mapped by routes file of type GET and POST
  */
 public class Application extends Controller {
 
-
     /**
-     *
+     * Handles requests to /
+     * renders views.Application.index.html
      */
     public static void index() {
         render();
@@ -33,6 +34,9 @@ public class Application extends Controller {
         render(username, messages, clientChatID);
     }
 
+    /**
+     * Job to be executed at app start up to
+     */
     public static void doJob() {
         System.out.println("Starting chat job");
         new Start().now();

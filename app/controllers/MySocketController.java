@@ -11,21 +11,15 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ * The controller to handle WebSocket requests. WebSocket requests are
+ * received when a jibberer or jabberer presses send.
  */
 public class MySocketController extends WebSocketController {
 
     /**
-     *
-     */
-
-    public static void socket(String name) {
-        outbound.send("hello %s!", name);
-    }
-
-    /**
-     * @param username
-     * @param clientChatID
+     * Controller method to handle websocket connections from the browser
+     * @param username username of the person who logged on
+     * @param clientChatID the id of the chat that person is chatting in
      */
     public static void messengerSocket(String username, String clientChatID) {
 

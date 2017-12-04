@@ -9,6 +9,10 @@ import models.*;
 
 public class Application extends Controller {
 
+    public static Chat chat1 = new Chat(new HashSet<>());
+    public static Chat chat2 = new Chat(new HashSet<>()); //TODO: use this after chat1 works
+
+
     public static void index() {
         render();
     }
@@ -36,10 +40,13 @@ public class Application extends Controller {
         chat(newUser.userName);
     }
 
-    public static void chat( String username ) {
+    public static void chat(String username) {
         User user = (User) User.find("byUsername", username).fetch().get(0);
         List<Chat> chats = user.chats;
+        //get the messages for each chat and send it to render
+        List<Message> msgs1 = chat1.messages;
+        List<Message> msgs2 = chat2.messages;
 
-        render(user, chats);
+        render(user, chats, msgs1);
     }
 }

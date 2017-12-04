@@ -3,6 +3,7 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class User extends Model {
     public String firstName;
     public String lastName;
 
-    @OneToMany
+    @ManyToMany
     public List<Chat> chats;
 
     public User(String first, String last, String user, String pwd) {
@@ -23,9 +24,6 @@ public class User extends Model {
         password = pwd;
         firstName = first;
         lastName = last;
-
-        chats = new LinkedList<>();
-        //chats.add(chat);
     }
 
 }

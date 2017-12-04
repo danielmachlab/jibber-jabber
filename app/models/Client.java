@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Client {
 
     public String username;
-    public Chat chat;
+    public String chatID;
     public Http.Outbound outbound;
 
     /**
@@ -22,5 +22,6 @@ public class Client {
     public Client(Http.Outbound ob, String username) {
         outbound = ob;
         this.username = username;
+        this.clients = Collections.synchronizedSet(clients);
     }
 }

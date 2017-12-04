@@ -15,9 +15,6 @@
             });
         });
 
-//        socket.onmessage = function (message) {
-//            addMessage(message);
-//        }
 
         function sendMessage(message) {
             socket.send($('#username').val() + ":" + message);
@@ -33,13 +30,6 @@
             document.getElementById("chat-box").appendChild(node);
             sendMessage(message);
         }
-
-//        function fromServer(message) {
-//            var div = document.createElement('div');
-//            document.body.appendChild(div);
-//        }
-
-
 
 
     </script>

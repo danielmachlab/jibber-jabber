@@ -1,6 +1,5 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 
 import java.util.*;
@@ -9,44 +8,15 @@ import models.*;
 
 public class Application extends Controller {
 
-    public static Chat chat1 = new Chat(new HashSet<>());
-    public static Chat chat2 = new Chat(new HashSet<>()); //TODO: use this after chat1 works
-
 
     public static void index() {
         render();
     }
 
-    public static void login(String username, String password) {
-        // get user from db
-        List<User> userList = User.find("byUsernameAndPassword", username, password).fetch();
+    public static void chat(String username, String chatId) {
+        Chat chat = (Chat) Chat.find("byChatId", chatId).fetch().get(0);
+        List<Message> messages = chat.messages;
 
-        if (userList.size() == 1) {
-            System.out.println("found user");
-            User user = userList.get(0);
-            chat(user.userName);
-        } else {
-            System.out.println("couldn't find user");
-            index();
-        }
-    }
-
-    public static void signup(String firstName, String lastName, String username, String password) {
-        // create user in db
-        User newUser = new User(firstName, lastName, username, password);
-        newUser.save();
-
-        // render chat page for this username
-        chat(newUser.userName);
-    }
-
-    public static void chat(String username) {
-        User user = (User) User.find("byUsername", username).fetch().get(0);
-        List<Chat> chats = user.chats;
-        //get the messages for each chat and send it to render
-        List<Message> msgs1 = chat1.messages;
-        List<Message> msgs2 = chat2.messages;
-
-        render(user, chats, msgs1);
+        render(username, messages);
     }
 }

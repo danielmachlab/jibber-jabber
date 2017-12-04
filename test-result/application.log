@@ -1,0 +1,5 @@
+03 Dec 2017 23:02:35,787 INFO  ~ Starting C:\Users\coope\Documents\jibber-jabber
+03 Dec 2017 23:02:36,570 WARN  ~ You're running Play! in DEV mode
+03 Dec 2017 23:02:36,729 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03 Dec 2017 23:02:46,272 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
+03 Dec 2017 23:02:47,052 INFO  ~ Application 'jibber-jabber' is now started !

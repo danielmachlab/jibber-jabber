@@ -46,47 +46,22 @@
         <div class="col-2">
 
         </div>
-        <form action="@{controllers.Application.login()}" method="post">
+        <form action="@{controllers.Application.chat()}" method="post">
             <div class="form-group inputArea">
                 <label for="exampleInputEmail1">Log In</label>
                 <input type="tel" class="form-control" aria-describedby="emailHelp" name="username"
                        placeholder="Username" required>
-                <small id="emailHelp" class="form-text text-muted"></small>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password"
-                       placeholder="Password" required>
-                <select name="chats">
-                    <option value="chat1">Volvo</option>
-                    <option value="chat2">Saab</option>
+                <select class="selectpicker inputArea" name="chatId">
+                    <option>jibber</option>
+                    <option>jabber</option>
                 </select>
+
             </div>
             <button type="submit" class="btn btn-primary inputArea">Submit</button>
         </form>
         <div class="col-2">
 
         </div>
-
-        <form action="@{controllers.Application.signup()}" method="post">
-            <div class="form-group">
-                <div class="row inputArea">
-                    <label for="validationServer01">Sign Up</label>
-                    <input type="text" class="form-control is-valid" id="userFirstName" placeholder="First name"
-                           name="firstName" value="" required>
-                </div>
-                <div class="row inputArea">
-                    <input type="text" class="form-control is-valid" id="userSecondName" placeholder="Last name"
-                           name="lastName" value="" required>
-                </div>
-                <div class="row inputArea">
-                    <input type="text" class="form-control is-valid" id="userUserName" placeholder="Username"
-                           name="username" value="" required>
-                </div>
-                <div class="row inputArea">
-                    <input type="password" class="form-control is-valid" id="userPassword" placeholder="Password"
-                           name="password" value="" required>
-                </div>
-                <button type="submit" class="btn btn-primary inputArea">Submit</button>
-            </div>
-        </form>
     </div>
 </div>
 </body>

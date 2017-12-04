@@ -3,25 +3,21 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Chat extends Model {
 
-    @ManyToMany
-    public Set<User> members;
+    public String chatId;
 
     @OneToMany
     public List<Message> messages;
 
-    public Chat(Set<User> users) {
-        this.members = users;
+    public Chat(String id) {
+        chatId = id;
         messages = new LinkedList<>();
     }
-
 
 }

@@ -1,5 +1,6 @@
-03 Dec 2017 23:02:35,787 INFO  ~ Starting C:\Users\coope\Documents\jibber-jabber
-03 Dec 2017 23:02:36,570 WARN  ~ You're running Play! in DEV mode
-03 Dec 2017 23:02:36,729 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-03 Dec 2017 23:02:46,272 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
-03 Dec 2017 23:02:47,052 INFO  ~ Application 'jibber-jabber' is now started !
+04 Dec 2017 03:15:57,098 INFO  ~ Starting C:\Users\coope\Documents\jibber-jabber
+04 Dec 2017 03:15:57,810 WARN  ~ You're running Play! in DEV mode
+04 Dec 2017 03:15:57,973 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+04 Dec 2017 03:16:12,175 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
+04 Dec 2017 03:16:13,099 INFO  ~ Application 'jibber-jabber' is now started !
+04 Dec 2017 03:22:47,239 INFO  ~ Restart: Signature change !

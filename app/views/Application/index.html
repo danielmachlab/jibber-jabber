@@ -2,18 +2,6 @@
 
 <html>
 <head>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var socket = new WebSocket('ws://localhost:9000/socket?name=ted');
-            socket.addEventListener('message', function (event) {
-                console.log(event.data);
-                $('#userFirstName').val("cooper");
-                $('#userSecondName').val("bell");
-                $('#userUserName').val("cooperbell");
-                $('#userPassword').val("boobs");
-            });
-        });
-    </script>
     <style>
         body, html {
             height: 100%;
@@ -43,7 +31,7 @@
     <img src="../../../public/images/LoginHeader2.jpg" class="img-fluid" alt="Responsive image">
     <br>
     <div class="row">
-        <div class="col-2">
+        <div class="col-5">
 
         </div>
         <form action="@{controllers.Application.chat()}" method="post">
@@ -51,7 +39,7 @@
                 <label for="exampleInputEmail1">Log In</label>
                 <input type="tel" class="form-control" aria-describedby="emailHelp" name="username"
                        placeholder="Username" required>
-                <select class="selectpicker inputArea" name="chatId">
+                <select class="selectpicker inputArea" name="clientChatID">
                     <option>jibber</option>
                     <option>jabber</option>
                 </select>

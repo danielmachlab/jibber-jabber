@@ -17,9 +17,10 @@ public class Client {
      */
     public static Set<Client> clients = Collections.synchronizedSet(new HashSet<Client>());
 
-    public Client(Http.Outbound ob, String username) {
+    public Client(Http.Outbound ob, String username, String chatId) {
         outbound = ob;
         this.username = username;
         this.clients = Collections.synchronizedSet(clients);
+        this.chatID = chatId;
     }
 }

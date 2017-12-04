@@ -8,7 +8,7 @@
     <script type="text/javascript">
         var socket;
         $(document).ready(function () {
-            socket = new WebSocket('ws://localhost:9000/messengerSocket?username=' + $('#username').val());
+            socket = new WebSocket('ws://localhost:9000/messengerSocket?username=' + $('#username').val() + "&clientChatID=" + $('#clientChatID').val());
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
                 $('#chat-box').append("<div>" + event.data + "</div>");
@@ -18,19 +18,9 @@
 
         function sendMessage() {
             var message = $('#message-box').val();
-            socket.send($('#username').val() + ":" + message);
+            socket.send(message);
             console.log('sent message');
         }
-
-//        function addMessage() {
-//            var message = $('#message-box').val();
-//            console.log("adding message: "+ message);
-//            var node = document.createElement("div");
-//            var textNode = document.createTextNode("You: " + message);
-//            node.appendChild(textNode);
-//            document.getElementById("chat-box").appendChild(node);
-//            sendMessage(message);
-//        }
 
 
     </script>
@@ -78,11 +68,11 @@
                     </div>
 
                     <div class = "feed col-9">
-                        <h2>Board Members: </h2>
+                        <h2>Chatting on ${clientChatID} as ${username}</h2>
 
                         <div class="row">
                             <label>
-                                Active members:
+
                             </label>
                             <div id = "activeUserList">
 
@@ -97,6 +87,7 @@
                             <div class="input-group">
                                 <input id="message-box" class="form-control"  placeholder="Compose Message">
                                 <input type="hidden" id="username" name="name" value="${username}">
+                                <input type="hidden" id="clientChatID" name="name" value="${clientChatID}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-secondary" onclick="sendMessage()">Send</button>
                                 </span>

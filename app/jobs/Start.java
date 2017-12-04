@@ -9,7 +9,6 @@ import play.jobs.OnApplicationStart;
 public class Start extends Job {
 
     public void doJob() {
-        System.out.println("Job is running");
 
         //if (Chat.findAll().size() == 0) {
 

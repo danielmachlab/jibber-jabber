@@ -9,16 +9,29 @@ import javax.persistence.Table;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Entity for the chats
+ */
 @Entity
 @Table(name = "\"jat\"")
 public class Chat extends GenericModel {
 
+    /**
+     * Primary Key
+     */
     @Id
     public String chatId;
 
+    /**
+     *
+     */
     @OneToMany
     public List<Message> messages;
 
+    /**
+     * Constructor
+     * @param id the chat id
+     */
     public Chat(String id) {
         chatId = id;
         messages = new LinkedList<>();

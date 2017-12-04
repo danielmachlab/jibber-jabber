@@ -56,11 +56,17 @@ public class MySocketController extends WebSocketController {
             System.out.println("this is the problem");
         } catch (Exception e) {
             System.out.println("Class: " + e.getClass());
-            for (Client clients : Client.clients) {
-                if (clients.outbound.equals(outbound)) {
-                    Client.clients.remove(clients);
-                    System.out.printf("removed: %s", clients.username);
+            try {
+                Client removeMe = null;
+                for (Client clients : Client.clients) {
+                    if (clients.outbound.equals(outbound)) {
+                        removeMe = clients;
+                        System.out.printf("removed: %s", clients.username);
+                    }
                 }
+                Client.clients.remove(removeMe);
+            } catch (JavaExecutionException exx) {
+                exx.getErrorDescription();
             }
 
 

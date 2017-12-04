@@ -8,7 +8,7 @@
     <script type="text/javascript">
         var socket;
         $(document).ready(function () {
-            socket = new WebSocket('ws://localhost:9000/messengerSocket?username=' + $('#username').val() + "&clientChatID=" + $('#clientChatID').val());
+            socket = new WebSocket('ws://mighty-meadow-41422.herokuapp.com/messengerSocket?username=' + $('#username').val() + "&clientChatID=" + $('#clientChatID').val());
             socket.addEventListener('message', function (event) {
                 console.log(event.data);
                 $('#chat-box').append("<div>" + event.data + "</div>");

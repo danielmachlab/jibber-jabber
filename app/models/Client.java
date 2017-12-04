@@ -1,17 +1,15 @@
 package models;
 
-import org.apache.commons.collections.set.SynchronizedSet;
 import play.mvc.Http;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Client {
 
     public String username;
-    public Chat chat;
+    public String chatID;
     public Http.Outbound outbound;
 
     /**
@@ -22,5 +20,6 @@ public class Client {
     public Client(Http.Outbound ob, String username) {
         outbound = ob;
         this.username = username;
+        this.clients = Collections.synchronizedSet(clients);
     }
 }

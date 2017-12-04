@@ -1,29 +1,25 @@
 package models;
 
-import play.db.jpa.Model;
+import play.db.jpa.GenericModel;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-public class Chat extends Model {
+public class Chat extends GenericModel {
 
-    @OneToMany
-    public Set<User> members;
+    @Id
+    public String chatId;
 
     @OneToMany
     public List<Message> messages;
 
-    public static Chat onlyChat = new Chat(new HashSet<>());
-
-    public Chat(Set<User> jibberJabberers) {
-        members = jibberJabberers;
+    public Chat(String id) {
+        chatId = id;
         messages = new LinkedList<>();
     }
-
 
 }

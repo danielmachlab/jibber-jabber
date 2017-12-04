@@ -11,13 +11,8 @@ public class BasicTest extends UnitTest {
     }
 
     @Test
-    public void UserCreateTest() {
-        User ted = new User("123", "ted", "tpaulsen", "ilikesocks");
-        ted.save();
-        List<User> users = User.findAll();
-
-        assertEquals(users.size(), 1);
-        assertTrue(users.get(0).userName.equals("ted"));
+    public void createChats(){
+        assertTrue(Chat.findAll().size() == 2);
     }
 
 }

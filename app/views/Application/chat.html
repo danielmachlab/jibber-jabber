@@ -15,9 +15,6 @@
             });
         });
 
-//        socket.onmessage = function (message) {
-//            addMessage(message);
-//        }
 
         function sendMessage() {
             var message = $('#message-box').val();
@@ -34,13 +31,6 @@
 //            document.getElementById("chat-box").appendChild(node);
 //            sendMessage(message);
 //        }
-
-//        function fromServer(message) {
-//            var div = document.createElement('div');
-//            document.body.appendChild(div);
-//        }
-
-
 
 
     </script>
@@ -106,7 +96,7 @@
                         <div class="col-11">
                             <div class="input-group">
                                 <input id="message-box" class="form-control"  placeholder="Compose Message">
-                                <input type="hidden" id="username" name="name" value="${user.userName}">
+                                <input type="hidden" id="username" name="name" value="${username}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-secondary" onclick="sendMessage()">Send</button>
                                 </span>

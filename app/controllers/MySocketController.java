@@ -18,10 +18,6 @@ public class MySocketController extends WebSocketController {
     }
 
     public static void messengerSocket(String username) {
-//        Iterator<String> x = WebSocketController.session.all().keySet().iterator();
-//        while (x.hasNext()){
-//            System.out.println(x.next());
-//        }
         System.out.println(username);
         outbound.send("You are now connected to the jat!");
         Client.clients.add(new Client(outbound, username));
@@ -34,20 +30,9 @@ public class MySocketController extends WebSocketController {
                     String senderUsername = ((Http.WebSocketFrame) e).textData.split(":")[0];
                     String message = ((Http.WebSocketFrame) e).textData.split(":")[1];
 
-
-//                    User sender = (User) User.find("byUsername", username).fetch().get(0);
-//                    Chat chat = ((User) User.find("byUsername", username).fetch().get(0)).chats.get(0);
-//                    Message msg = new Message(sender, message, chat);
-//                    msg.save();
-
                     for (Client clients : Client.clients) {
                         clients.outbound.send(senderUsername + ": " + message);
                         System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
-//                        if (!(clients.username.equals(senderUsername))) {
-//                            clients.outbound.send(senderUsername + ": " + message);
-//                        }else{
-//                            System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
-//                        }
                     }
                 }
             }
@@ -70,8 +55,6 @@ public class MySocketController extends WebSocketController {
             } catch (JavaExecutionException exx) {
                 exx.getErrorDescription();
             }
-
-
         }
     }
 

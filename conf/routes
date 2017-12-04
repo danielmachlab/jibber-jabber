@@ -4,9 +4,7 @@
 
 # Home page
 GET     /                                       Application.index
-POST    /login                                  Application.login
-POST    /signup                                 Application.signup
-GET     /chat                                   Application.chat
+POST     /chat                                   Application.chat
 
 # WebSocket
 WS      /socket                                 MySocketController.socket

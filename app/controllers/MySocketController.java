@@ -10,6 +10,7 @@ import play.mvc.WebSocketController;
 import play.libs.F.*;
 
 import javax.mail.Session;
+import java.util.Iterator;
 
 public class MySocketController extends WebSocketController {
 
@@ -34,15 +35,20 @@ public class MySocketController extends WebSocketController {
                 if (e instanceof Http.WebSocketFrame) {
                     String senderUsername = ((Http.WebSocketFrame) e).textData.split(":")[0];
                     String message = ((Http.WebSocketFrame) e).textData.split(":")[1];
+                    if(message.equals("quit")){
+                        disconnect();
+                    }
 
-                    User sender = (User) User.find("byUsername", username).fetch().get(0);
-                    Chat chat = ((User) User.find("byUsername", username).fetch().get(0)).chats.get(0);
-                    Message msg = new Message(sender, message, chat);
-                    msg.save();
+//                    User sender = (User) User.find("byUsername", username).fetch().get(0);
+//                    Chat chat = ((User) User.find("byUsername", username).fetch().get(0)).chats.get(0);
+//                    Message msg = new Message(sender, message, chat);
+//                    msg.save();
 
                     for (Client clients : Client.connections) {
                         if (!(clients.username.equals(senderUsername))) {
                             clients.outbound.send(senderUsername + ": " + message);
+                        }else{
+                            System.out.printf("Server received message: %s From User: %s\n", message, senderUsername);
                         }
                     }
                 }
@@ -62,7 +68,18 @@ public class MySocketController extends WebSocketController {
                 }
             }
 
+
         }
+    }
+
+    public static void printClients(){
+        Iterator<Client> x = Client.connections.iterator();
+        System.out.println("------------\nCurrent connected clients: ");
+        while(x.hasNext()){
+            System.out.println(x.next().username);
+
+        }
+        System.out.println("------------");
     }
 
 }

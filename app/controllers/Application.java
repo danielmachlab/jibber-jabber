@@ -29,8 +29,8 @@ public class Application extends Controller {
 
     public static void signup(String firstName, String lastName, String username, String password) {
         // create user in db
-        User newUser = new User(firstName, lastName, username, password, Chat.onlyChat);
-        newUser.save(); //TODO: Doesn't work. I think it has to do with the chats List
+        User newUser = new User(firstName, lastName, username, password);
+        newUser.save();
 
         // render chat page for this username
         chat(newUser.userName);

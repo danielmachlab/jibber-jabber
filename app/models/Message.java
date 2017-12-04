@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "message")
+@Table(name = "\"message\"")
 public class Message extends Model {
 
     public String msg;

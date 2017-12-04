@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name = "\"chat\"")
+@Table(name = "\"jat\"")
 public class Chat extends GenericModel {
 
     @Id

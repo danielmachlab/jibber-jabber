@@ -14,6 +14,12 @@ public class Start extends Job {
 
         //if (Chat.findAll().size() == 0) {
 
+            try {
+                Thread.sleep(15000);
+            } catch (InterruptedException i) {
+                // nothing
+            }
+
 
             Chat jibber = new Chat("jibber");
             jibber.save();
